@@ -6,6 +6,9 @@ import {
   TextInput,
   ReferenceInput,
   SelectInput,
+  TextField,
+  Datagrid,
+  FunctionField,
 } from "react-admin";
 
 const postFilters = [
@@ -22,20 +25,19 @@ const postFilters = [
 
 const PostList = () => (
   <List filters={postFilters} sort={{ field: "id", order: "ASC" }}>
-    <DataTable>
-      <DataTable.Col source="id" />
-      <DataTable.Col source="title" label="Post Title" />
-      <DataTable.Col
-        label="Excerpt"
-        render={(record) => `${record.body.substring(0, 50)}...`}
+    <Datagrid rowClick="edit">
+      {/* ID maydoni */}
+      <TextField source="id" />
+
+      {/* Nested appeal.contract_number maydoni */}
+      <FunctionField
+        label="Contract Number"
+        render={(record: any) => record?.appeal?.contract_number || "N/A"}
       />
-      <DataTable.Col source="userId" label="User">
-        <ReferenceField source="userId" reference="users" />
-      </DataTable.Col>
-      <DataTable.Col>
-        <EditButton />
-      </DataTable.Col>
-    </DataTable>
+
+      {/* Edit tugmasi */}
+      <EditButton />
+    </Datagrid>
   </List>
 );
 

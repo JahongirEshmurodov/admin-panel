@@ -22,12 +22,19 @@ export const App = () => (
   >
     <Resource
       icon={ArcticleIcon}
-      name="posts"
+      name="attached-appeal-devices"
+      options={{ label: "Biriktirilgan arizalar" }}
       list={PostList}
       show={PostShow}
       edit={PostEdit}
       create={PostCreate}
     />
-    <Resource icon={PersonIcon} name="users" list={UserList} show={UserShow} />
+    <Resource
+      icon={PersonIcon}
+      name="confirmed-appeal-devices"
+      options={{ label: "Tasdiqlangan arizalar" }}
+      list={UserList}
+      show={UserShow}
+    />
   </Admin>
 );
